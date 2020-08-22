@@ -142,7 +142,6 @@
   <ItemGroup>
     <ClCompile Include="hanoi_main.cpp" />
     <ClCompile Include="hanoi.cpp" />
-    <ClCompile Include="Pillar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hanoi.hpp" />
