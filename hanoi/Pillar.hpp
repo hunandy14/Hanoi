@@ -8,12 +8,15 @@ class Pillar{
 public:
 	using dataType = int;
 	Pillar(int n) {
+		pusu_num(n);
+	}
+	Pillar(){}
+public:
+	void pusu_num(int n) {
 		for (int i = n; i > 0; i--) {
 			p.push(i);
 		}
 	}
-	Pillar(){}
-public:
 	void print(string s = "") {
 		cout << s;
 		vector<dataType> v(p.size());

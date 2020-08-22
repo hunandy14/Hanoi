@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stack>
 #include <string>
-#include "hanoi.hpp"
+#include "Hanoi.hpp"
 #include "Pillar.hpp"
 using namespace std;
 //====================================================================================

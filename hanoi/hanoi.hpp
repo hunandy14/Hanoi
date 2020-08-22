@@ -3,19 +3,16 @@
 #include <ios>
 #include <vector>
 #include <stack>
-using std::vector;
-using std::stack;
+#include "Pillar.hpp"
+using namespace std;
 
-class harnoi {
+
+class Hanoi {
 
 public:
-	harnoi(size_t size);
-	void pri();
-	void go();
-	void move(int n1, int n2);
 
 private:
 	size_t size;
 	size_t step_min;
-	stack<int> hs[3];
+	Pillar p[3];
 };

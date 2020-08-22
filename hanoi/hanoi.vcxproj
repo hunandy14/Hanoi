@@ -141,10 +141,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="hanoi_main.cpp" />
-    <ClCompile Include="hanoi.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hanoi.hpp" />
+    <ClInclude Include="Hanoi.hpp" />
     <ClInclude Include="Pillar.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
