@@ -21,7 +21,7 @@ public:
 	int shift(int p1, int p2) {
 		// P1至少要有東西
 		if (p[p1].size() > 0) {
-			// 正好小於1才可以
+			// 差值P2大於P1才可以
 			if ( (p[p2].size() <= 0) or (p[p1] < p[p2])){
 				// 不可重複上一步
 				if ((p1 != log[1]) or (p2 != log[0])) { 
@@ -41,15 +41,15 @@ public:
 	// 組牌
 	int defrag() {
 		if (p[1].size()>0 and p[2].size()>0) { // 柱列1.2要有東西
-			int i= p[1] - p[2];
-			if (i==1){ // 1可以組到2
+			int i= p[1]-p[2];
+			if (i==1){ // 正好+1 = 1可以組到2
 				if (shift(2, 1)) {
 					return 1;
-				} return 0;
-			} else if (i == -1) { // 2可以組到1
+				}
+			} else if (i == -1) { // 正好-1 = 2可以組到1
 				if (shift(1, 2)) {
 					return 1;
-				} return 0;
+				}
 			} 
 			//cout << "大小沒有連續" << endl;
 			return 0;
@@ -131,7 +131,6 @@ public:
 				print("adju_odd", step);
 			}
 		}
-		
 	}
 private:
 	size_t size;
