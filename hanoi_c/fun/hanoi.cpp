@@ -79,7 +79,6 @@ int hanoi_sent(node** ht){
             hanoi_move(ht[0],ht[2]);
         }else{
             cout << "hanoi_sent Error!" << endl;
-            
         }
     }
     return 0;
@@ -163,6 +162,14 @@ int hanoi_change(node** ht){
 }
 
 int hanoi_checksent(node** ht){
+    /*if (hanoi_lenth(ht) % 2 == 1 and hanoi_checkmove(ht[0], ht[2]) == 1) {
+        return 1;
+    }
+    if (hanoi_lenth(ht) % 2 == 0 and hanoi_checkmove(ht[0], ht[1]) == 1) {
+        return 1;
+    }*/
+
+
     if (hanoi_checkmove(ht[0],ht[2]) == 1 || \
         hanoi_checkmove(ht[0],ht[1]) == 1){
         return 1;
