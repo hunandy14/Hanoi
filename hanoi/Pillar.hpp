@@ -1,66 +1,65 @@
 #pragma once
-#include <iostream>
 #include <stack>
-using namespace std;
 
 
 class Pillar{
 public:
 	using dataType = int;
 	Pillar(int n) {
-		pusu_num(n);
+		pusu_list(n);
 	}
 	Pillar(){}
 public:
-	void pusu_num(int n) {
+	void pusu_list(int n) {
 		for (int i = n; i > 0; i--) {
 			p.push(i);
 		}
 	}
-	void print(string s = "") {
-		cout << s;
-		vector<dataType> v(p.size());
-		stack<dataType> p = this->p;
+	void print(std::string s = "") {
+		std::cout << s;
+		std::stack<dataType> p = this->p;
+		std::stack<dataType> t;
 
 		for (size_t i = 0, n = p.size(); i < n; i++) {
-			v[n - i - 1] = p.top();
+			t.push(p.top());
 			p.pop();
 		}
-
-		for (auto&& i : v) {
-			cout << i << ", ";
-		} cout << endl;
+		for (size_t i = 0, n = t.size(); i < n; i++) {
+			std::cout << t.top() << ", ";
+			t.pop();
+		} std::cout << std::endl;
+	}
+public:
+	void push(dataType n) {
+		p.push(n);
+	}
+	size_t size() {
+		return p.size();
 	}
 public:
 	friend int Pillar_TopShift(Pillar& _p1, Pillar& _p2) {
-		stack<Pillar::dataType>& p1 = _p1;
-		stack<Pillar::dataType>& p2 = _p2;
+		std::stack<Pillar::dataType>& p1 = _p1;
+		std::stack<Pillar::dataType>& p2 = _p2;
 
 		if (p1.size() > 0) { // 必要條件P1有東西
-			if (p2.size() == 0) { // P2沒東西直接放
-				p2.push(p1.top());
-				p1.pop();
-				return 0;
-			} else if (p2.size() > 0) { // P2有東西要比大小
-				if (p1.top() > p2.top()) {
-					p2.push(p1.top());
-					p1.pop();
-					return 0;
-				}
-			}
+			p2.push(p1.top());
+			p1.pop();
+			return 1;
 		}
-		cout << "不符合移動條件" << endl;
-		return 1;
+		throw "p1已空";
+		//cout << "不符合移動條件" << endl;
+		return 0;
 	}
 public:
-	operator stack<dataType>&(){
+	operator std::stack<dataType>&(){
 		return p;
 	}
-	operator int () const{
+	operator dataType() const{
+		if (p.size()==0) throw "堆疊內沒有數據";
 		return p.top();
 	}
 private:
-	stack<int> p;
+	std::stack<dataType> p;
 };
 
 

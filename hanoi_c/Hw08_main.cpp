@@ -19,7 +19,7 @@ int main(int argc, char const *argv[]){
     ht[1] = node_creat(-1);
     ht[2] = node_creat(-1);
     /* 批次匯入節點 */
-    int len = 9; //幾個盤子
+    int len = 5; //幾個盤子
     int *data = new int[len];
     for (int i = 0; i < len; ++i)
         data[i] = len-i;
@@ -39,6 +39,7 @@ int main(int argc, char const *argv[]){
         if (hanoi_handdif(ht)==1){
             if (hanoi_defrag(ht) == 0){
                 cout << "  def" << endl;
+                hanoi_pri(ht);
                 continue;
             }
         }
@@ -46,6 +47,7 @@ int main(int argc, char const *argv[]){
         if (hanoi_checksent(ht)==1){
             if (hanoi_sent(ht) == 0){
                 cout << "  sen" << endl;
+                hanoi_pri(ht);
                 continue;
             }
         }
@@ -55,12 +57,14 @@ int main(int argc, char const *argv[]){
             // 沒有重複上一步的話 => 小收回
             if (hanoi_receive(ht, 0) == 0){
                 cout << "  sre" << endl;
+                hanoi_pri(ht);
                 continue;
             }
             // 重複上一步的話 => 大收
             else{
                 hanoi_receive(ht, 1);
                 cout << "  bre" << endl;
+                hanoi_pri(ht);
                 continue;
             }
         }
@@ -69,12 +73,14 @@ int main(int argc, char const *argv[]){
             // 沒有重複上一步的話 => 小換
             if (hanoi_change(ht)==0){
                 cout << "  chg" << endl;
+                hanoi_pri(ht);
                 continue;
             }
             // 重複上一步的話 => 大收
             else{
                 hanoi_receive(ht, 1);
                 cout << "  bre" << endl;
+                hanoi_pri(ht);
                 continue;
             }
         }

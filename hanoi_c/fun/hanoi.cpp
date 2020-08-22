@@ -44,43 +44,59 @@ int hanoi_lenth(node** ht){
 }
 
 int hanoi_sent(node** ht){
+    int m=0, a=1, b=2; // 調整AB可以改變最後成果在哪一柱
+    if (hanoi_checkmove(ht[m], ht[b]) == 1) {
+        // 如果重複上一步的話(另一個收也算)
+        if (hanoi_logchk(ht[m], ht[b]) == 1 ||
+            hanoi_logchk(ht[m], ht[a]) == 1)
+            return 1;
+        hanoi_move(ht[m], ht[b]);
+    } else if (hanoi_checkmove(ht[m], ht[a]) == 1) {
+        // 如果重複上一步的話(另一個收也算)
+        if (hanoi_logchk(ht[m], ht[a]) == 1 ||
+            hanoi_logchk(ht[m], ht[b]) == 1)
+            return 1;
+        hanoi_move(ht[m], ht[a]);
+    } else {
+        cout << "hanoi_sent Error!" << endl;
+    }
     // 單數
-    if (hanoi_lenth(ht)%2 == 1){
-        if (hanoi_checkmove(ht[0],ht[2]) == 1){
-            // 如果重複上一步的話(另一個收也算)
-            if (hanoi_logchk(ht[0],ht[2])==1 ||
-                hanoi_logchk(ht[0],ht[1])==1)
-                return 1;
-            hanoi_move(ht[0],ht[2]);
-        }else if (hanoi_checkmove(ht[0],ht[1]) == 1){
-            // 如果重複上一步的話(另一個收也算)
-            if (hanoi_logchk(ht[0],ht[1])==1 ||
-                hanoi_logchk(ht[0],ht[2])==1)
-                return 1;
-            hanoi_move(ht[0],ht[1]);
-        }else {
-            cout << "hanoi_sent Error!" << endl;
-            
-        }
-    }
-    // 雙數
-    else if (hanoi_lenth(ht)%2 == 0) {
-        if (hanoi_checkmove(ht[0],ht[1])==1){
-            // 如果重複上一步的話(另一個收也算)
-            if (hanoi_logchk(ht[0],ht[1])==1 ||
-                hanoi_logchk(ht[0],ht[2])==1)
-                return 1;
-            hanoi_move(ht[0],ht[1]);
-        }else if (hanoi_checkmove(ht[0],ht[2]) == 1){
-            // 如果重複上一步的話(另一個收也算)
-            if (hanoi_logchk(ht[0],ht[2])==1 ||
-                hanoi_logchk(ht[0],ht[1])==1)
-                return 1;
-            hanoi_move(ht[0],ht[2]);
-        }else{
-            cout << "hanoi_sent Error!" << endl;
-        }
-    }
+    //if (hanoi_lenth(ht)%2 == 1){
+    //    if (hanoi_checkmove(ht[0],ht[2]) == 1){
+    //        // 如果重複上一步的話(另一個收也算)
+    //        if (hanoi_logchk(ht[0],ht[2])==1 ||
+    //            hanoi_logchk(ht[0],ht[1])==1)
+    //            return 1;
+    //        hanoi_move(ht[0],ht[2]);
+    //    }else if (hanoi_checkmove(ht[0],ht[1]) == 1){
+    //        // 如果重複上一步的話(另一個收也算)
+    //        if (hanoi_logchk(ht[0],ht[1])==1 ||
+    //            hanoi_logchk(ht[0],ht[2])==1)
+    //            return 1;
+    //        hanoi_move(ht[0],ht[1]);
+    //    }else {
+    //        cout << "hanoi_sent Error!" << endl;
+    //        
+    //    }
+    //}
+    //// 雙數
+    //else if (hanoi_lenth(ht)%2 == 0) {
+    //    if (hanoi_checkmove(ht[0],ht[1])==1){
+    //        // 如果重複上一步的話(另一個收也算)
+    //        if (hanoi_logchk(ht[0],ht[1])==1 ||
+    //            hanoi_logchk(ht[0],ht[2])==1)
+    //            return 1;
+    //        hanoi_move(ht[0],ht[1]);
+    //    }else if (hanoi_checkmove(ht[0],ht[2]) == 1){
+    //        // 如果重複上一步的話(另一個收也算)
+    //        if (hanoi_logchk(ht[0],ht[2])==1 ||
+    //            hanoi_logchk(ht[0],ht[1])==1)
+    //            return 1;
+    //        hanoi_move(ht[0],ht[2]);
+    //    }else{
+    //        cout << "hanoi_sent Error!" << endl;
+    //    }
+    //}
     return 0;
 }
 
@@ -115,8 +131,10 @@ int hanoi_receive(node** ht, int mode){
 int hanoi_handdif(node** ht, int mode){
     int temp=nodep_final(ht[1])->data;
     temp-=nodep_final(ht[2])->data;
-    if (temp < 0 && mode!=-1)
-        temp += (0 - temp)*2;
+    if (temp < 0 && mode!=-1) {
+        //temp += (0 - temp)*2;
+        temp = abs(temp);
+    }
     return temp;
 }
 
