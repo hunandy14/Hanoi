@@ -40,21 +40,17 @@ public:
 	}
 	// 組牌
 	int defrag() {
-		if (p[1].size()>0 and p[2].size()>0) { // 柱列1.2要有東西
-			int i= p[1]-p[2];
-			if (i==1){ // 正好+1 = 1可以組到2
-				if (shift(2, 1)) {
-					return 1;
-				}
-			} else if (i == -1) { // 正好-1 = 2可以組到1
-				if (shift(1, 2)) {
-					return 1;
-				}
-			} 
-			//cout << "大小沒有連續" << endl;
-			return 0;
-		} 
-		//cout << "柱列為空" << endl;
+		int i= p[1]-p[2];
+		if (i==1){ // 正好+1 = 1可以組到2
+			if (shift(2, 1)) {
+				return 1;
+			}
+		} else if (i == -1) { // 正好-1 = 2可以組到1
+			if (shift(1, 2)) {
+				return 1;
+			}
+		}
+		//cout << "大小沒有連續" << endl;
 		return 0;
 	}
 	// 發牌
@@ -112,23 +108,25 @@ public:
 
 		for (int i = 0; i < step_min; ++i) {
 			int step = i+1;
-			// 組牌
-			if (defrag()) {
-				print("defrag", step);
-			}
+
 			// 發牌
-			else if (sent()) {
-				print("sent", step);
-			}
-			// 牌值差雙
-			else if (abs(p[1]-p[2]) % 2 == 0) {
-				adju_even();
-				print("adju_even", step);
-			}
-			// 牌值差單
-			else if (abs(p[1]-p[2]) % 2 == 1) {
-				adju_odd();
-				print("adju_odd", step);
+			if (sent()) {
+				print("發牌", step);
+			// 組牌
+			} else if (defrag()) {
+				print("組牌", step);
+			} else {
+				int diff = abs(p[1] - p[2]);
+				// 牌值差雙
+				if (diff % 2 == 0 and adju_even()) {
+					print("牌值差雙", step);
+				}
+				// 牌值差單
+				else if (diff % 2 == 1 and adju_odd()) {
+					print("牌值差單", step);
+				} else {
+					throw "沒有動作";
+				}
 			}
 		}
 	}
