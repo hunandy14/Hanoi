@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hanoi", "hanoi\hanoi.vcxproj", "{92DCCF28-1AD2-45C0-9D38-D6B2E57C6572}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hanoi_c", "hanoi_c\hanoi_c.vcxproj", "{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,14 +21,6 @@ Global
 		{92DCCF28-1AD2-45C0-9D38-D6B2E57C6572}.Release|x64.Build.0 = Release|x64
 		{92DCCF28-1AD2-45C0-9D38-D6B2E57C6572}.Release|x86.ActiveCfg = Release|Win32
 		{92DCCF28-1AD2-45C0-9D38-D6B2E57C6572}.Release|x86.Build.0 = Release|Win32
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Debug|x64.ActiveCfg = Debug|x64
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Debug|x64.Build.0 = Debug|x64
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Debug|x86.ActiveCfg = Debug|Win32
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Debug|x86.Build.0 = Debug|Win32
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Release|x64.ActiveCfg = Release|x64
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Release|x64.Build.0 = Release|x64
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Release|x86.ActiveCfg = Release|Win32
-		{3BEDDF53-79C1-4AE0-A4C0-3D0074EEE822}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
